@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.GDPU.Demo.Announcement.mapper.AnnouncementMapper">
+
+
+
+    <select id="selectLatestAnnouncements" resultType="Announcement">
+        SELECT *
+        FROM announcement
+        ORDER BY time DESC
+        LIMIT 3
+    </select>
+
+    <select id="selectAllAnnouncements" resultType="Announcement">
+        SELECT *
+        FROM announcement
+    </select>
+
+    <delete id="deleteById">
+        DELETE
+        FROM announcement
+        WHERE anncId = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="Announcement">
+        UPDATE announcement
+        SET publisher = #{publisher},
+            avatar    = #{avatar},
+            message   = #{message},
+            time      = NOW()
+        WHERE anncId = #{anncId}
+    </update>
+
+    <insert id="insert" parameterType="Announcement" useGeneratedKeys="true" keyProperty="anncId">
+        INSERT INTO announcement (publisher, avatar, message, time)
+        VALUES (#{publisher}, #{avatar}, #{message}, NOW())
+    </insert>
+</mapper>
+
