@@ -1,7 +1,6 @@
 package edu.GDPU.Demo.UserLogin;
 
 import edu.GDPU.Demo.UserLogin.entity.User;
-import edu.GDPU.Demo.UserLogin.service.Impl.UserServiceImpl;
 import edu.GDPU.Demo.UserLogin.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
