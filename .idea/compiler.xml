@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="UserLogin" />
-        <module name="Common" />
+        <module name="backend" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Announcement" target="1.8" />
+      <module name="Common" target="1.8" />
+      <module name="UserLogin" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

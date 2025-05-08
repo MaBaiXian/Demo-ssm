@@ -8,21 +8,21 @@
       <el-button size="medium" @click="sortByDate = !sortByDate; sortNoticesByDate()">按时间排序</el-button>
       <!-- 搜索栏 -->
       <div class="search-bar-container">
-        <el-input v-model="filterContent" placeholder="搜索公告..." size="medium" />
+        <el-input v-model="filterContent" placeholder="搜索公告..." size="medium"/>
       </div>
       <!-- 搜索按钮 -->
       <el-button type="primary" size="medium" @click="filterNotices">搜索</el-button>
     </div>
 
     <!-- 列表间隔 -->
-    <div class="list-spacing" />
+    <div class="list-spacing"/>
 
     <!-- 公告列表 -->
     <el-table :data="notices" style="width: 100%">
-      <el-table-column prop="id" label="公告ID" width="180" />
-      <el-table-column prop="message" label="内容" />
-      <el-table-column prop="publisher" label="发布者" />
-      <el-table-column prop="time" label="发布时间" />
+      <el-table-column prop="id" label="公告ID" width="180"/>
+      <el-table-column prop="message" label="内容"/>
+      <el-table-column prop="publisher" label="发布者"/>
+      <el-table-column prop="time" label="发布时间"/>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button size="mini" @click="editNotice(scope.row)">编辑</el-button>
@@ -35,7 +35,7 @@
     <el-dialog :visible.sync="dialogVisible" :title="dialogTitle">
       <el-form :model="currentNotice">
         <el-form-item label="内容">
-          <el-input v-model="currentNotice.message" type="textarea" />
+          <el-input v-model="currentNotice.message" type="textarea"/>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { updateAnnouncement, createAnnouncement, getAllAnnouncements, deleteAnnouncement } from '@/api/Announcement'
+import {updateAnnouncement, createAnnouncement, getAllAnnouncements, deleteAnnouncement} from '@/api/Announcement'
 
 export default {
   data() {
@@ -72,19 +72,24 @@ export default {
   methods: {
     fetchNotices() {
       getAllAnnouncements().then(response => {
-        this.notices = response.data
+        this.notices = response.data.map(notice => ({
+          id: notice.anncId, // 将 anncId 映射为 id
+          message: notice.message,
+          publisher: notice.publisher,
+          time: notice.time
+        }));
         this.allNotices = this.notices
-        console.log(response.Announcements)
+        console.log(this.allNotices)
       })
     },
     showAddDialog() {
       this.dialogTitle = '添加公告'
-      this.currentNotice = { id: null, message: '', publisher: '', time: '' }
+      this.currentNotice = {id: null, message: '', publisher: '', time: ''}
       this.dialogVisible = true
     },
     editNotice(notice) {
       this.dialogTitle = '编辑公告'
-      this.currentNotice = { ...notice }
+      this.currentNotice = {...notice}
       this.dialogVisible = true
     },
     deleteNotice(id) {
@@ -138,8 +143,8 @@ export default {
     filterNotices() {
       if (this.filterContent) {
         this.notices = this.allNotices.filter(notice =>
-          (notice.message.toLowerCase().includes(this.filterContent.toLowerCase())) ||
-          (notice.publisher.toLowerCase().includes(this.filterContent.toLowerCase()))
+            (notice.message.toLowerCase().includes(this.filterContent.toLowerCase())) ||
+            (notice.publisher.toLowerCase().includes(this.filterContent.toLowerCase()))
         )
       } else {
         this.notices = this.allNotices
