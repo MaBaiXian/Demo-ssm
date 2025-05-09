@@ -1,4 +1,4 @@
-package edu.GDPU.Demo.UserLogin.service.Impl;
+package edu.GDPU.Demo.UserLogin.service.impl;
 
 
 import edu.GDPU.Demo.UserLogin.entity.User;
