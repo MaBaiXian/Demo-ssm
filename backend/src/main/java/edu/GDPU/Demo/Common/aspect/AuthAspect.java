@@ -1,6 +1,5 @@
 package edu.GDPU.Demo.Common.aspect;
 
-import edu.GDPU.Demo.Common.annotation.AuthCheck;
 import edu.GDPU.Demo.UserLogin.entity.User;
 import edu.GDPU.Demo.UserLogin.service.UserService;
 import org.apache.log4j.Logger;
@@ -18,25 +17,36 @@ import java.lang.reflect.Method;
 public class AuthAspect {
 
     private static final Logger log = Logger.getLogger(AuthAspect.class);
+
+    public AuthAspect() {
+        log.info("AuthAspect initialized!");
+    }
+
     @Autowired
     private UserService userService;
 
-    @Around("@annotation(edu.GDPU.Demo.Common.annotation.AuthCheck)")
+    @Around("execution(* edu.GDPU.Demo.Announcement.service.impl.*.*(..))")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 
+        // 获取方法参数
+        Object[] args = joinPoint.getArgs();
+        String token = null;
 
-        log.info("AuthAspect around11111111111111111111111111111111111111111111111111111");
+        // 查找String类型的token参数
+        for (Object arg : args) {
+            if (arg instanceof String) {
+                token = (String) arg;
+                break;
+            }
+        }
+
+        if (token == null) {
+            throw new RuntimeException("未找到Token参数");
+        }
 
         // 获取方法签名
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-
-        // 获取注解
-        AuthCheck authCheck = method.getAnnotation(AuthCheck.class);
-
-        // 获取方法参数
-        Object[] args = joinPoint.getArgs();
-        String token = (String) args[0];
 
         // 验证token
         User user = userService.getUserByToken(token);
@@ -45,22 +55,20 @@ public class AuthAspect {
         }
 
         // 验证权限
-        if (authCheck.roles().length > 0) {
-            boolean hasRole = false;
-            for (String role : authCheck.roles()) {
-                if (role.equals(user.getRoles())) {
-                    hasRole = true;
-                    break;
-                }
+        String[] requiredRoles = {"DormAdmin", "SysAdmin"};
+        boolean hasRole = false;
+        for (String role : requiredRoles) {
+            if (role.equals(user.getRoles())) {
+                hasRole = true;
+                break;
             }
-            if (!hasRole) {
-                throw new RuntimeException("权限不足");
-            }
+        }
+        if (!hasRole) {
+            throw new RuntimeException("权限不足");
         }
 
         // 执行原方法
         return joinPoint.proceed();
-
     }
 
 }
