@@ -47,11 +47,15 @@ public class User {
      */
     private String major;
 
+    /**
+     * 学号（学生唯一标识符）
+     */
+    private String stuId;
+
     public User() {
     }
 
-    public User(Integer userId, String username, String password, String token, String avatar,
-                String roles, String gender, String dorm, String major) {
+    public User(Integer userId, String username, String password, String token, String avatar, String roles, String gender, String dorm, String major, String stuId) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -61,6 +65,7 @@ public class User {
         this.gender = gender;
         this.dorm = dorm;
         this.major = major;
+        this.stuId = stuId;
     }
 
     public Integer getUserId() {
@@ -135,6 +140,14 @@ public class User {
         this.major = major;
     }
 
+    public String getStuId() {
+        return stuId;
+    }
+
+    public void setStuId(String stuId) {
+        this.stuId = stuId;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -147,6 +160,7 @@ public class User {
                 ", gender='" + gender + '\'' +
                 ", dorm='" + dorm + '\'' +
                 ", major='" + major + '\'' +
+                ", stuId='" + stuId + '\'' +
                 '}';
     }
 }
