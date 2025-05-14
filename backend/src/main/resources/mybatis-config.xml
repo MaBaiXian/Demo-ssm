@@ -9,5 +9,7 @@
     <typeAliases>
         <package name="edu.GDPU.Demo.UserLogin.entity"/>
         <package name="edu.GDPU.Demo.Announcement.entity"/>
+        <package name="edu.GDPU.Demo.Adminer.entity"/>
+        <package name="edu.GDPU.Demo.Student.entity"/>
     </typeAliases>
 </configuration>

@@ -54,18 +54,18 @@ public class AuthAspect {
             throw new RuntimeException("无效的Token");
         }
 
-//        // 验证权限
-//        String[] requiredRoles = {"DormAdmin", "SysAdmin"};
-//        boolean hasRole = false;
-//        for (String role : requiredRoles) {
-//            if (role.equals(user.getRoles())) {
-//                hasRole = true;
-//                break;
-//            }
-//        }
-//        if (!hasRole) {
-//            throw new RuntimeException("权限不足");
-//        }
+        // 验证权限
+        String[] requiredRoles = {"DormAdmin", "SysAdmin"};
+        boolean hasRole = false;
+        for (String role : requiredRoles) {
+            if (role.equals(user.getRoles())) {
+                hasRole = true;
+                break;
+            }
+        }
+        if (!hasRole) {
+            throw new RuntimeException("权限不足");
+        }
 
         // 执行原方法
         return joinPoint.proceed();
