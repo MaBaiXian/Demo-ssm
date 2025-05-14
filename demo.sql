@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.4.4, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: demo
 -- ------------------------------------------------------
--- Server version	8.0.40
+-- Server version	8.4.4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `announcement` (
   `message` varchar(1024) NOT NULL COMMENT '公告内容',
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '发布时间',
   PRIMARY KEY (`anncId`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COMMENT='公告表';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3 COMMENT='公告表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `announcement` (
 
 LOCK TABLES `announcement` WRITE;
 /*!40000 ALTER TABLE `announcement` DISABLE KEYS */;
-INSERT INTO `announcement` VALUES (3,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','玛卡巴卡，玛卡巴卡','2024-11-18 16:35:15'),(4,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','玛卡巴卡，玛卡巴卡','2024-11-18 19:33:44'),(5,'SysAdmin','https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0','这是第5条公告','2024-11-18 19:33:44'),(6,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','112222','2024-12-09 18:31:20'),(7,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','今晚十点后宿舍将进行卫生检查，请各宿舍整理好内务。','2024-12-09 18:33:55'),(8,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','禁止在宿舍内使用大功率电器，违规将严肃处理。','2024-12-09 18:34:07'),(9,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','本周末将进行宿舍消防设施检查，请保持通道畅通。\n','2024-12-09 18:34:14'),(10,'SysAdmin','https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0','宿舍管理系统将于明日上午 9 点至 11 点进行维护，期间暂停服务。','2024-12-09 18:35:50'),(11,'SysAdmin','https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0','123123123','2024-12-09 18:40:59');
+INSERT INTO `announcement` VALUES (3,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','玛卡巴卡，玛卡巴卡\n','2024-11-18 16:35:15'),(5,'SysAdmin','https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0','这是第5条公告','2024-11-18 19:33:44'),(7,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','今晚十点后宿舍将进行卫生检查，请各宿舍整理好内务。','2024-12-09 18:33:55'),(8,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','禁止在宿舍内使用大功率电器，违规将严肃处理。','2024-12-09 18:34:07'),(9,'DormAdmin','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','本周末将进行宿舍消防设施检查，请保持通道畅通。\n','2024-12-09 18:34:14'),(10,'SysAdmin','https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0','宿舍管理系统将于明日上午 9 点至 11 点进行维护，期间暂停服务。','2024-12-09 18:35:50');
 /*!40000 ALTER TABLE `announcement` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +65,7 @@ CREATE TABLE `fee` (
 
 LOCK TABLES `fee` WRITE;
 /*!40000 ALTER TABLE `fee` DISABLE KEYS */;
-INSERT INTO `fee` VALUES ('1920302351','百岳松','健康管理192',223.4,'3-111'),('2020301923','百晓生','中药栽培202',1324.1,'5-515'),('2120502241','小夫','计算机科学与技术212',1333.2,'8-302'),('2230502312','张三','计算机科学与技术223',600.12,'11-501'),('2230502313','李四','计算机科学与技术223',1324.56,'11-516'),('2230502314','武松','计算机科学与技术223',4231.23,'11-517'),('2230502316','胖虎','计算机科学与技术223',321.23,'11-508'),('2230502334','马柏贤','计算机科学与技术223',1433,'11-515'),('2230502344','死神','计算机科学与技术223',0,'10-214'),('2230502346','谢智勇','计算机科学与技术223',1433.2,'11-515'),('2230502351','叶佳昊','计算机科学与技术223',1234.1,'11-515');
+INSERT INTO `fee` VALUES ('1920302351','百岳松','健康管理192',223.4,'3-111'),('2020301923','百晓生','中药栽培202',1324.1,'5-515'),('2120502241','Student','计算机科学与技术212',1333.2,'8-302'),('2230502312','张三','计算机科学与技术223',600.12,'11-501'),('2230502313','李明	','计算机科学与技术223',1324.56,'11-516'),('2230502314','陈宇','计算机科学与技术223',4231.23,'11-517'),('2230502316','胖虎','计算机科学与技术223',321.23,'11-508'),('2230502334','马柏贤','计算机科学与技术223',1433,'11-515'),('2230502344','死神','计算机科学与技术223',0,'10-214'),('2230502346','谢智勇','计算机科学与技术223',1433.2,'11-515'),('2230502351','叶佳昊','计算机科学与技术223',1234.1,'11-515');
 /*!40000 ALTER TABLE `fee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,6 +118,7 @@ CREATE TABLE `user` (
   `gender` varchar(32) NOT NULL DEFAULT '男' COMMENT '性别',
   `dorm` varchar(255) NOT NULL COMMENT '宿舍号',
   `major` varchar(255) NOT NULL COMMENT '年级专业',
+  `stuId` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`userId`),
   UNIQUE KEY `token` (`token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COMMENT='用户表';
@@ -129,7 +130,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'SysAdmin','111111','1733741297004','https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0','SysAdmin','男','后勤信息服务部','系统管理员'),(2,'DormAdmin','111111','1734077319859','https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','DormAdmin','男','舍管办公室','宿舍管理员'),(3,'Student','111111',NULL,'https://bit.ly/4g2J1Yg','Student','男','11-515','计算机科学与技术22(3)班'),(4,'admin','123456',NULL,'https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','DormAdmin','男','舍管办公室','宿舍管理员'),(5,'李明	','111111',NULL,'https://www.emojiall.com/images/240/microsoft/windows-11-23H2/1f60d.png','student','男','03-308','计算机科学与技术'),(6,'陈宇','111111',NULL,'https://www.emojiall.com/images/240/microsoft/windows-11-23H2/1f60d.png','student','男','12-520','数学与应用数学	');
+INSERT INTO `user` VALUES (1,'SysAdmin','111111',NULL,'https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0','SysAdmin','男','后勤信息服务部','系统管理员',NULL),(2,'DormAdmin','111111',NULL,'https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','DormAdmin','男','舍管办公室','宿舍管理员',NULL),(3,'Student','111111','1747188559874','https://bit.ly/4g2J1Yg','Student','男','11-515','计算机科学与技术22(3)班','2120502241'),(4,'admin','123456',NULL,'https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png','DormAdmin','男','舍管办公室','宿舍管理员',NULL),(5,'李明	','111111',NULL,'https://www.emojiall.com/images/240/microsoft/windows-11-23H2/1f60d.png','student','男','03-308','计算机科学与技术','2230502313'),(6,'陈宇','111111',NULL,'https://www.emojiall.com/images/240/microsoft/windows-11-23H2/1f60d.png','student','男','12-520','数学与应用数学	','2230502314');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -142,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-13 16:12:38
+-- Dump completed on 2025-05-14 20:36:36
