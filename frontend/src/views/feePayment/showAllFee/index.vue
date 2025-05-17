@@ -2,15 +2,15 @@
     <div class="fee-container">
         <div class="search-area">
             <el-input
-                    v-model="searchId"
-                    placeholder="请输入要查询的学生ID"
-                    class="search-input"
-                    @keyup.enter="searchFee"
+                v-model="searchId"
+                placeholder="请输入要查询的学生ID"
+                class="search-input"
+                @keyup.enter="searchFee"
             />
             <el-button
-                    class="search-btn"
-                    type="primary"
-                    @click="searchFee"
+                class="search-btn"
+                type="primary"
+                @click="searchFee"
             >
                 搜索
             </el-button>
@@ -19,11 +19,11 @@
         <div class="table-area">
             <div ref="tableWrapper" class="table-wrapper">
                 <el-table
-                        :data="feeList"
-                        border
-                        fit
-                        :highlight-current-row="highlightId"
-                        style="width: 100%"
+                    :data="feeList"
+                    border
+                    fit
+                    :highlight-current-row="highlightId"
+                    style="width: 100%"
                 >
                     <el-table-column prop="stuId" label="学生ID" />
                     <el-table-column prop="stuName" label="学生姓名" />
