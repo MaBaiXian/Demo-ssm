@@ -14,7 +14,9 @@
     <context:component-scan base-package="
     edu.GDPU.Demo.Announcement.service,
     edu.GDPU.Demo.UserLogin.service,
-    edu.GDPU.Demo.Common.aspect"/>
+    edu.GDPU.Demo.Adminer.service,
+    edu.GDPU.Demo.Common.aspect,
+    edu.GDPU.Demo.Student.service"/>
 
     <!-- 数据源配置 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -36,7 +38,9 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="
         edu.GDPU.Demo.Announcement.mapper,
-        edu.GDPU.Demo.UserLogin.mapper"/>
+        edu.GDPU.Demo.UserLogin.mapper,
+        edu.GDPU.Demo.Adminer.mapper,
+         edu.GDPU.Demo.Student.mapper"/>
     </bean>
 
     <!-- 事务管理 -->
@@ -45,6 +49,6 @@
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <!--    配置切面-->
+    <!-- 配置切面 -->
     <aop:aspectj-autoproxy/>
 </beans>
