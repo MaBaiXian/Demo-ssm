@@ -1,10 +1,9 @@
-package edu.GDPU.Demo.Announcement.service.Impl;
+package edu.GDPU.Demo.Announcement.service.impl;
 
-import org.apache.log4j.Logger;
+
 import edu.GDPU.Demo.Announcement.entity.Announcement;
 import edu.GDPU.Demo.Announcement.mapper.AnnouncementMapper;
 import edu.GDPU.Demo.Announcement.service.AnnouncementService;
-import edu.GDPU.Demo.Common.annotation.AuthCheck;
 import edu.GDPU.Demo.UserLogin.entity.User;
 import edu.GDPU.Demo.UserLogin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import java.util.List;
 @Service
 public class AnnouncementServiceImpl implements AnnouncementService {
 
-    private static final Logger log = Logger.getLogger(AnnouncementServiceImpl.class);
 
     @Autowired
     private AnnouncementMapper announcementMapper;
@@ -30,9 +28,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
      * @return 最新公告列表
      */
     @Override
-    @AuthCheck
     public List<Announcement> getAnnouncementByToken(String token) {
-        log.info("getAnnouncementByToken22222222222222222222222222222222222222222222222");
         return announcementMapper.selectLatestAnnouncements();
     }
 
@@ -43,7 +39,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
      * @return 所有公告列表
      */
     @Override
-    @AuthCheck
     public List<Announcement> getAllAnnouncement(String token) {
         return announcementMapper.selectAllAnnouncements();
     }
@@ -56,7 +51,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
      * @return 受影响的行数
      */
     @Override
-    @AuthCheck(roles = {"SysAdmin", "DormAdmin"})
     public int deleteAnnouncement(String token, int id) {
         return announcementMapper.deleteById(id);
     }
@@ -70,7 +64,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
      * @return 受影响的行数
      */
     @Override
-    @AuthCheck(roles = {"SysAdmin", "DormAdmin"})
     public int updateAnnouncement(String token, int id, String message) {
         User user = userService.getUserByToken(token);
         Announcement ann = new Announcement();
@@ -89,7 +82,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
      * @return 受影响的行数
      */
     @Override
-    @AuthCheck(roles = {"SysAdmin", "DormAdmin"})
     public int createAnnouncement(String token, String message) {
         User user = userService.getUserByToken(token);
         Announcement ann = new Announcement();

@@ -1,7 +1,6 @@
 package edu.GDPU.Demo.Announcement.mapper;
 
 import edu.GDPU.Demo.Announcement.entity.Announcement;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
