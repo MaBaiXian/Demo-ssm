@@ -184,39 +184,39 @@ export const asyncRoutes = [
     ]
   },
 
-  {
-    path: '/dormitoryReplacement',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'DormitoryReplacement',
-        component: () => import('@/views/dormitoryReplacement/index'),
-        meta: {
-          title: '宿舍更换',
-          icon: 'form',
-          roles: ['Student']
-        }
-      }
-    ]
-  },
-
-  {
-    path: '/dormitoryExit',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'dormitoryExit',
-        component: () => import('@/views/dormitoryExit/index'),
-        meta: {
-          title: '毕业退舍',
-          icon: 'el-icon-delete',
-          roles: ['Student']
-        }
-      }
-    ]
-  },
+  // {
+  //   path: '/dormitoryReplacement',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'DormitoryReplacement',
+  //       component: () => import('@/views/dormitoryReplacement/index'),
+  //       meta: {
+  //         title: '宿舍更换',
+  //         icon: 'form',
+  //         roles: ['Student']
+  //       }
+  //     }
+  //   ]
+  // },
+  //
+  // {
+  //   path: '/dormitoryExit',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'dormitoryExit',
+  //       component: () => import('@/views/dormitoryExit/index'),
+  //       meta: {
+  //         title: '毕业退舍',
+  //         icon: 'el-icon-delete',
+  //         roles: ['Student']
+  //       }
+  //     }
+  //   ]
+  // },
 
   {
     path: '/Announcement',
@@ -270,11 +270,11 @@ export const asyncRoutes = [
 ]
 
 const createRouter = () =>
-  new Router({
-    // mode: 'history', // require service support
-    scrollBehavior: () => ({ y: 0 }),
-    routes: constantRoutes
-  })
+    new Router({
+      // mode: 'history', // require service support
+      scrollBehavior: () => ({ y: 0 }),
+      routes: constantRoutes
+    })
 
 const router = createRouter()
 

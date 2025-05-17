@@ -4,6 +4,7 @@ import { resetRouter } from '@/router'
 
 const getDefaultState = () => {
   return {
+    stuId: '',
     token: getToken(),
     name: '',
     avatar: '',
@@ -17,6 +18,9 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const mutations = {
+  SET_STU_ID: (state, stuId) => {
+    state.stuId = stuId
+  },
   RESET_STATE: (state) => {
     Object.assign(state, getDefaultState())
   },
@@ -70,13 +74,13 @@ const actions = {
           return reject('验证失败，请重新登录')
         }
 
-        const { username, avatar, roles, major, dorm, gender } = data
+        const { stuId, username, avatar, roles, major, dorm, gender } = data
 
         // roles must be a non-empty array
         if (!roles || roles.length <= 0) {
           reject('信息获取：用户角色权限不能为空！')
         }
-
+        commit('SET_STU_ID', stuId)
         commit('SET_NAME', username)
         commit('SET_AVATAR', avatar)
         commit('SET_ROLES', roles)
