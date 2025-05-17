@@ -13,7 +13,10 @@
     <!-- 扫描controller包 -->
     <context:component-scan base-package="
     edu.GDPU.Demo.Announcement.controller,
-    edu.GDPU.Demo.UserLogin.controller"/>
+    edu.GDPU.Demo.UserLogin.controller,
+    edu.GDPU.Demo.Adminer.controller,
+    edu.GDPU.Demo.Student.controller"/>
+
 
     <!-- 启用注解驱动 -->
     <mvc:annotation-driven/>

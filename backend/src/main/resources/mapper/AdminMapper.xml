@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.GDPU.Demo.Adminer.mapper.AdminMapper">
+
+    <!-- 根据ID查询管理员 -->
+    <select id="selectById" resultType="edu.GDPU.Demo.Adminer.entity.Admin">
+        SELECT userId, username, password, roles, avatar, gender, dorm, major
+        FROM user
+        WHERE userId = #{id}
+    </select>
+
+    <!-- 查询所有管理员（角色为SysAdmin或DormAdmin） -->
+    <select id="selectList" resultType="edu.GDPU.Demo.Adminer.entity.Admin">
+        SELECT userId, username, password, roles, avatar, gender, dorm, major
+        FROM user
+        WHERE roles IN ('SysAdmin', 'DormAdmin')
+    </select>
+
+    <!-- 插入新管理员 -->
+    <insert id="insert" parameterType="edu.GDPU.Demo.Adminer.entity.Admin">
+        INSERT INTO user (username, password, roles, avatar, gender, dorm, major)
+        VALUES (#{username}, #{password}, #{roles}, #{avatar}, #{gender}, #{dorm}, #{major})
+    </insert>
+
+    <!-- 根据ID更新管理员 -->
+    <update id="updateById" parameterType="edu.GDPU.Demo.Adminer.entity.Admin">
+        UPDATE user SET
+                        username = #{username},
+                        password = #{password},
+                        roles = #{roles},
+                        avatar = #{avatar},
+                        gender = #{gender},
+                        dorm = #{dorm},
+                        major = #{major}
+        WHERE userId = #{userId}
+    </update>
+
+    <!-- 根据ID删除管理员 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM user
+        WHERE userId = #{id}
+    </delete>
+
+    <!-- 统计管理员数量 -->
+    <select id="selectCount" resultType="java.lang.Long">
+        SELECT COUNT(*)
+        FROM user
+        WHERE roles IN ('SysAdmin', 'DormAdmin')
+    </select>
+
+
+</mapper>

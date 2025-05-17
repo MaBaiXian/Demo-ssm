@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.GDPU.Demo.Student.mapper.StudentMapper">
+
+    <!-- 查询 user 表中角色为 Student 的用户（明确字段映射） -->
+    <select id="getStudentByToken" resultType="edu.GDPU.Demo.Student.entity.Student">
+        SELECT
+           userId,
+            username,
+            password,
+            token,
+            avatar,
+            roles,
+            gender,
+            dorm,
+            major
+        FROM user
+        WHERE roles = 'Student'
+    </select>
+
+    <!-- 删除 user 表中指定 userId 的学生 -->
+    <delete id="deleteStudent">
+        DELETE FROM user
+        WHERE userId = #{userId}
+    </delete>
+
+    <!-- 更新 user 表中指定 userId 的学生信息 -->
+    <update id="updateStudent">
+        UPDATE user
+        SET
+            username = #{username},
+            password = #{password},
+            avatar = #{avatar},
+            gender = #{gender},
+            dorm = #{dorm},
+            major = #{major}
+        WHERE userId = #{userId}
+    </update>
+
+    <!-- 插入新学生到 user 表（角色固定为 Student） -->
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id">
+        INSERT INTO user (
+            username, password, avatar, roles, gender, dorm, major
+        ) VALUES (
+                     #{username}, #{password}, #{avatar}, 'Student', #{gender}, #{dorm}, #{major}
+                 )
+    </insert>
+</mapper>
