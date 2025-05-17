@@ -41,9 +41,9 @@ export function updateFee(feeId, feeData) {
 }
 
 // 删除费用信息
-export function deleteFee(feeId) {
+export function deleteFee(stuId) {
   return request({
-    url: `/api/fees/${feeId}`,
+    url: `/api/fees/deleteById/${stuId}`,
     method: 'delete'
   })
 }
