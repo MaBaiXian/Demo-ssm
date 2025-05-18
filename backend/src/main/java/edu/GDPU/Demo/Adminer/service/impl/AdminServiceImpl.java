@@ -7,6 +7,7 @@ import edu.GDPU.Demo.UserLogin.entity.User;
 import edu.GDPU.Demo.UserLogin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 // ... 原有导入和类定义 ...
@@ -58,6 +59,11 @@ public class AdminServiceImpl implements AdminService {
         if (user == null || !"SysAdmin".equals(user.getRoles())) {
             throw new RuntimeException("权限不足");
         }
+        if (admin.getRoles().equals("SysAdmin")) {
+            admin.setAvatar("https://ts1.cn.mm.bing.net/th/id/R-C.8fc4a6ee4a21185c12ba17b780b5bd76?rik=xb2r7iZh5OuOIA&riu=http%3a%2f%2fimg.ourschools.cn%2fimage%2fschool_logo%2fp00030165.jpeg&ehk=nT1dnPPNW4ixHhMTXSRsyQwV2hcTfrJN%2f77umSe%2fRjo%3d&risl=&pid=ImgRaw&r=0");
+        } else {
+            admin.setAvatar("https://www.emojiall.com/images/120/microsoft/windows-11-november-2021-update/1f975.png");
+        }
         return adminMapper.insert(admin);
     }
 
@@ -67,7 +73,7 @@ public class AdminServiceImpl implements AdminService {
             throw new RuntimeException("未登录，请先登录");
         }
         User user = userService.getUserByToken(token);
-        if (user == null ||!"SysAdmin".equals(user.getRoles())) {
+        if (user == null || !"SysAdmin".equals(user.getRoles())) {
             throw new RuntimeException("权限不足");
         }
         return adminMapper.updateById(admin);
@@ -79,7 +85,7 @@ public class AdminServiceImpl implements AdminService {
             throw new RuntimeException("未登录，请先登录");
         }
         User user = userService.getUserByToken(token);
-        if (user == null ||!"SysAdmin".equals(user.getRoles())) {
+        if (user == null || !"SysAdmin".equals(user.getRoles())) {
             throw new RuntimeException("权限不足");
         }
         return adminMapper.deleteById(id);

@@ -82,6 +82,7 @@ public class StudentServiceImpl implements StudentService {
     public int createStudent(String token, Student student) {
         validateAdminRole(token);
         // 强制设置新学生角色为 Student（避免前端篡改）
+        student.setAvatar("https://bit.ly/4g2J1Yg");
         student.setRoles("Student");
         return studentMapper.insertStudent(student);
     }
