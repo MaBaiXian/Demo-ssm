@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.GDPU.Demo.Fee.mapper.FeeMapper">
+
+    <!-- 基本映射结果集 -->
+    <resultMap id="BaseResultMap" type="edu.GDPU.Demo.Fee.entity.Fee">
+        <id column="stuId" property="stuId" jdbcType="VARCHAR"/>
+        <result column="stuName" property="stuName" jdbcType="VARCHAR"/>
+        <result column="className" property="className" jdbcType="VARCHAR"/>
+        <result column="fee" property="fee" jdbcType="DOUBLE"/>
+        <result column="dormitory" property="dormitory" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 查询所有费用记录 -->
+    <select id="getAllFees" resultMap="BaseResultMap">
+        SELECT * FROM fee
+    </select>
+
+    <!-- 根据学号查询费用记录 -->
+    <select id="getFeeByStuId" resultMap="BaseResultMap">
+        SELECT * FROM fee WHERE stuId = #{stuId}
+    </select>
+
+    <!-- 添加费用记录 -->
+    <insert id="addFee" parameterType="edu.GDPU.Demo.Fee.entity.Fee">
+        INSERT INTO fee (stuId, stuName, className, fee, dormitory)
+        VALUES (#{stuId}, #{stuName}, #{className}, #{fee}, #{dormitory})
+    </insert>
+
+    <!-- 更新费用记录 -->
+    <update id="updateFee" parameterType="edu.GDPU.Demo.Fee.entity.Fee">
+        UPDATE fee
+        SET stuName = #{stuName},
+            className = #{className},
+            fee = #{fee},
+            dormitory = #{dormitory}
+        WHERE stuId = #{stuId}
+    </update>
+
+    <!-- 根据学号删除费用记录 -->
+    <delete id="deleteFeeByStuId" parameterType="java.lang.String">
+        DELETE FROM fee WHERE stuId = #{stuId}
+    </delete>
+
+</mapper>
