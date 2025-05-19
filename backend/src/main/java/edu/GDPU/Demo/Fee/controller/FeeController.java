@@ -1,5 +1,6 @@
 package edu.GDPU.Demo.Fee.controller;
 
+import edu.GDPU.Demo.Common.dto.Result;
 import edu.GDPU.Demo.Fee.entity.Fee;
 import edu.GDPU.Demo.Fee.service.FeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,26 +33,27 @@ public class FeeController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addFee(@RequestBody Fee fee) {
+    public Result addFee(@RequestBody Fee fee) {
         if (feeService.addFee(fee)) {
-            return new ResponseEntity<>("Fee added successfully", HttpStatus.OK);
+            return new Result(20000, "Fee added successfully");
         }
-        return new ResponseEntity<>("Failed to add fee", HttpStatus.BAD_REQUEST);
+        return new Result(400, "Failed to add fee");
     }
 
     @PutMapping
-    public ResponseEntity<String> updateFee(@RequestBody Fee fee) {
+    public Result updateFee(@RequestBody Fee fee) {
         if (feeService.updateFee(fee)) {
-            return new ResponseEntity<>("Fee updated successfully", HttpStatus.OK);
+            return new Result(20000, "Fee updated successfully");
         }
-        return new ResponseEntity<>("Failed to update fee", HttpStatus.BAD_REQUEST);
+        return new Result(400, "Failed to update fee");
     }
 
     @DeleteMapping("/deleteById/{stu_id}")
-    public ResponseEntity<String> deleteFeeByStuId(@PathVariable String stu_id) {
+    @ResponseBody
+    public Result deleteFeeByStuId(@PathVariable String stu_id) {
         if (feeService.deleteFeeByStuId(stu_id)) {
-            return new ResponseEntity<>("Fee deleted successfully", HttpStatus.OK);
+            return new Result(20000, "Fee deleted successfully");
         }
-        return new ResponseEntity<>("Failed to delete fee", HttpStatus.BAD_REQUEST);
+        return new Result(400, "Failed to delete fee");
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.GDPU.Demo.Repair.mapper.RepairMapper">
+    <insert id="insertRepair" parameterType="edu.GDPU.Demo.Repair.entity.Repair">
+        INSERT INTO repair (title, applicant, application_time, importance, content, image_uri, status)
+        VALUES (#{title}, #{applicant}, #{applicationTime}, #{importance}, #{content}, #{imageUri},0)
+    </insert>
+
+    <update id="updateRepair" parameterType="edu.GDPU.Demo.Repair.entity.Repair">
+        UPDATE repair
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteRepair" parameterType="java.lang.Integer">
+        DELETE FROM repair WHERE id = #{id}
+    </delete>
+
+    <select id="selectRepairs" resultType="edu.GDPU.Demo.Repair.entity.Repair">
+        SELECT * FROM repair
+        <where>
+            <!-- 判断标题 -->
+            <if test="repairDto.title != null and repairDto.title != ''">
+                title LIKE CONCAT('%', #{repairDto.title}, '%')
+            </if>
+            <!-- 判断申请时间区间 -->
+            <if test="repairDto.beginTime != null and repairDto.endTime != null">
+                AND application_time BETWEEN #{repairDto.beginTime} AND #{repairDto.endTime}
+            </if>
+            <!-- 判断处理状态 -->
+            <if test="repairDto.status != null">
+                AND status = #{repairDto.status}
+            </if>
+        </where>
+    </select>
+</mapper>
