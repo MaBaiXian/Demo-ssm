@@ -1,7 +1,9 @@
 package edu.GDPU.Demo.Repair.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import java.util.Date;
-
+@Data
 public class Repair {
     private Integer id;
     private String title;
@@ -61,9 +63,8 @@ public class Repair {
         this.applicant = applicant;
     }
 
-    public Date getApplicationTime() {
-        return applicationTime;
-    }
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX", timezone = "UTC")
+    public Date getApplicationTime() {return applicationTime;}
 
     public void setApplicationTime(Date applicationTime) {
         this.applicationTime = applicationTime;
