@@ -221,8 +221,8 @@ export default {
       // 这里执行其他的分页逻辑
       this.listLoading = true
       getList(this.page, this.limit, this.queryParams).then(response => {
-        this.list = response.data.records
-        this.total = response.data.total
+        this.list = response.data
+        this.total = response.data.length
         this.listLoading = false
       })
     },
@@ -233,8 +233,8 @@ export default {
         this.queryParams.applicationTime = null
       }
       getList(this.page, this.limit, this.queryParams).then(response => {
-        this.list = response.data.records
-        this.total = response.data.total
+        this.list = response.data
+        this.total = response.data.length
         this.listLoading = false
       })
     },
@@ -245,8 +245,8 @@ export default {
       this.queryParams.beginTime = null
       this.queryParams.endTime = null
       getList(this.page, this.limit, this.queryParams).then(response => {
-        this.list = response.data.records
-        this.total = response.data.total
+        this.list = response.data
+        this.total = response.data.length
         this.listLoading = false
       })
     },
