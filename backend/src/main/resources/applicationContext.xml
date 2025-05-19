@@ -17,7 +17,8 @@
     edu.GDPU.Demo.Adminer.service,
     edu.GDPU.Demo.Common.aspect,
     edu.GDPU.Demo.Student.service,
-    edu.GDPU.Demo.Fee.service"/>
+    edu.GDPU.Demo.Fee.service,
+    edu.GDPU.Demo.Repair.service"/>
 
     <!-- 数据源配置 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -42,7 +43,8 @@
         edu.GDPU.Demo.UserLogin.mapper,
         edu.GDPU.Demo.Adminer.mapper,
          edu.GDPU.Demo.Student.mapper,
-	edu.GDPU.Demo.Fee.mapper"/>
+	edu.GDPU.Demo.Fee.mapper,
+    edu.GDPU.Demo.Repair.mapper"/>
     </bean>
 
     <!-- 事务管理 -->

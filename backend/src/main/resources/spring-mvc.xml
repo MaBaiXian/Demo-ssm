@@ -16,7 +16,8 @@
     edu.GDPU.Demo.UserLogin.controller,
     edu.GDPU.Demo.Adminer.controller,
     edu.GDPU.Demo.Student.controller,
-    edu.GDPU.Demo.Fee.controller"/>
+    edu.GDPU.Demo.Fee.controller,
+    edu.GDPU.Demo.Repair.controller"/>
 
 
     <!-- 启用注解驱动 -->
