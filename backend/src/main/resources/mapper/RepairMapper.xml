@@ -5,18 +5,12 @@
 <mapper namespace="edu.GDPU.Demo.Repair.mapper.RepairMapper">
     <insert id="insertRepair" parameterType="edu.GDPU.Demo.Repair.entity.Repair">
         INSERT INTO repair (title, applicant, application_time, importance, content, image_uri, status)
-        VALUES (#{title}, #{applicant}, #{applicationTime}, #{importance}, #{content}, #{imageUri}, #{status})
+        VALUES (#{title}, #{applicant}, #{applicationTime}, #{importance}, #{content}, #{imageUri},0)
     </insert>
 
     <update id="updateRepair" parameterType="edu.GDPU.Demo.Repair.entity.Repair">
         UPDATE repair
-        SET title = #{title},
-            applicant = #{applicant},
-            application_time = #{applicationTime},
-            importance = #{importance},
-            content = #{content},
-            image_uri = #{imageUri},
-            status = #{status}
+        SET status = #{status}
         WHERE id = #{id}
     </update>
 
